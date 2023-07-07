@@ -1,6 +1,5 @@
 package models;
 
-import com.fasterxml.jackson.annotation.JacksonInject;
 import jakarta.persistence.*;
 
 @Entity

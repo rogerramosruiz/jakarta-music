@@ -69,18 +69,40 @@ public class ArtistController {
         return artists;
     }
 
-    public void updateArtist(Artist art){
+    public void updateArtist(int id, String nombre, String imageurl, String spotify, String youtube){
         EntityManager em = entityManagerFactory.createEntityManager();
         EntityTransaction et = null;
         try{
             et = em.getTransaction();
             et.begin();
-            Artist artist = em.find(Artist.class, art.getId());
+            Artist artist = em.find(Artist.class, id);
             if(artist != null){
-                artist.setNombre(art.getNombre());
-                artist.setImageurl(art.getImageurl());
-                artist.setSpotify(art.getSpotify());
-                artist.setYoutube(art.getSpotify());
+                artist.setNombre(nombre);
+                artist.setImageurl(imageurl);
+                artist.setSpotify(spotify);
+                artist.setYoutube(youtube);
+                et.commit();
+            }
+        }
+        catch (Exception ex){
+            if(et !=null)
+                et.rollback();
+            ex.printStackTrace();
+        }
+        finally {
+            em.close();
+        }
+    }
+    
+    public void deleteArtist(int id){
+        EntityManager em = entityManagerFactory.createEntityManager();
+        EntityTransaction et = null;
+        try{
+            et = em.getTransaction();
+            et.begin();
+            Artist artist = em.find(Artist.class, id);
+            if(artist != null){
+                em.remove(artist);
                 et.commit();
             }
         }

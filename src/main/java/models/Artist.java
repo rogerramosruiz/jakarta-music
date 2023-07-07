@@ -24,6 +24,7 @@ public class Artist {
     public Artist(){
 
     }
+    
     public Artist(String nombre, String imageurl, String spotify, String youtube) {
         this.nombre = nombre;
         this.imageurl = imageurl;
