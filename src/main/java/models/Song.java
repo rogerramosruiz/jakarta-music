@@ -1,24 +1,27 @@
 package models;
 
+import com.fasterxml.jackson.annotation.JacksonInject;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "song")
 
-public class song {
+public class Song {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true)
     private int id;
     private String nombre;
     private int estrellas;
-    private int id_album;
+    @ManyToOne
+    @JoinColumn(name = "id_album")
+    private Album album;
 
-    public song(){}
-    public song(String nombre, int estrellas, int id_album) {
+    public Song(){}
+    public Song(String nombre, int estrellas, Album album) {
         this.nombre = nombre;
         this.estrellas = estrellas;
-        this.id_album = id_album;
+        this.album = album;
     }
 
     public int getId() {
@@ -45,11 +48,11 @@ public class song {
         this.estrellas = estrellas;
     }
 
-    public int getId_album() {
-        return id_album;
+    public Album getAlbum() {
+        return album;
     }
 
-    public void setId_album(int id_album) {
-        this.id_album = id_album;
+    public void setAlbum(Album album) {
+        this.album = album;
     }
 }

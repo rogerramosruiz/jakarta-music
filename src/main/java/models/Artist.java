@@ -9,7 +9,7 @@ import jakarta.persistence.GenerationType;
 
 @Entity
 @Table(name = "artist")
-public class artist {
+public class Artist {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true)
@@ -21,10 +21,10 @@ public class artist {
     private String spotify;
     private String youtube;
 
-    public artist(){
+    public Artist(){
 
     }
-    public artist(String nombre, String imageurl, String spotify, String youtube) {
+    public Artist(String nombre, String imageurl, String spotify, String youtube) {
         this.nombre = nombre;
         this.imageurl = imageurl;
         this.spotify = spotify;

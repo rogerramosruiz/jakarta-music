@@ -4,20 +4,22 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "album")
-public class album {
+public class Album {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true)
     private int id;
     private String nombre;
 
-    private int id_artist;
+    @ManyToOne
+    @JoinColumn(name = "id_artist")
+    private Artist artist;
 
-    public album(){}
+    public Album(){}
 
-    public album(String nombre, int id_artist) {
+    public Album(String nombre, Artist artist) {
         this.nombre = nombre;
-        this.id_artist = id_artist;
+        this.artist = artist;
     }
 
     public int getId() {
@@ -36,11 +38,11 @@ public class album {
         this.nombre = nombre;
     }
 
-    public int getId_artist() {
-        return id_artist;
+    public Artist getArtist() {
+        return artist;
     }
 
-    public void setId_artist(int id_artist) {
-        this.id_artist = id_artist;
+    public void setArtist(Artist artist) {
+        this.artist = artist;
     }
 }
