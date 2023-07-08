@@ -30,7 +30,7 @@
         <tr>
             <td>${album.nombre}</td>
             <td>
-                <form action="songs">
+                <form action="song">
                     <input hidden type="text" name="id_album" value="${album.id}">
                     <input type="submit" value="Canciones">
                 </form>
