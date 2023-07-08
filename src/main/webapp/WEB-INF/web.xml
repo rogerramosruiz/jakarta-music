@@ -4,6 +4,7 @@
 	xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
 	<servlet>
 		<servlet-name>jakarta.ws.rs.core.Application</servlet-name>
+		<servlet-class>servlets.Artist.ArtistServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>jakarta.ws.rs.core.Application</servlet-name>

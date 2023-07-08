@@ -35,15 +35,20 @@
         </div>
         <input type="submit" value="Añadir">
     </form>
-    </div>
+</div>
 
-   <table>
+<table>
     <c:forEach items="${artists}" var="artist">
         <tr>
             <td><img src="${artist.imageurl}" width="100"></td>
             <td>${artist.nombre}</td>
             <td><a href="${artist.spotify}">Spotify</a></td>
             <td><a href="${artist.youtube}">Youtube</a> </td>
+            
+            <form action="album" method="get">
+                <td><input hidden type="text" name="id_artist" value="${artist.id}"></td>
+                <td><input type="submit" value="Albums"></td>
+            </form>
 
             <form action="editartist" method="get">
                 <td><input hidden type="text" name="id" value="${artist.id}"></td>
@@ -54,7 +59,6 @@
                 <td><input hidden type="text" name="id" value="${artist.id}"></td>
                 <td><input type="submit" value="Delete"></td>
             </form>
-
         </tr>
     </c:forEach>
    </table> 
