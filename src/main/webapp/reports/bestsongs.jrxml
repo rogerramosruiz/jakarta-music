@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.3.final using JasperReports Library version 6.20.3-415f9428cffdb6805c6f85bbb29ebaf18813a2ab  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="bestsongs" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0a177639-7adf-4373-b9f1-94b750ead771">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="music"/>
+	<parameter name="id_artist" class="java.lang.Integer"/>
+	<queryString language="SQL">
+		<![CDATA[select a.nombre, a.imageurl, al.nombre as Album, s.nombre as Cancion , s.estrellas
+from artist a, album al, song s
+where a.id = al.id_artist
+and al.id = s.id_album
+and s.estrellas > 3
+and a.id = $P{id_artist}]]>
+	</queryString>
+	<field name="nombre" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nombre"/>
+		<property name="com.jaspersoft.studio.field.label" value="nombre"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="artist"/>
+	</field>
+	<field name="imageurl" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="imageurl"/>
+		<property name="com.jaspersoft.studio.field.label" value="imageurl"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="artist"/>
+	</field>
+	<field name="COLUMN_3" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nombre"/>
+		<property name="com.jaspersoft.studio.field.label" value="nombre"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="album"/>
+	</field>
+	<field name="COLUMN_4" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nombre"/>
+		<property name="com.jaspersoft.studio.field.label" value="nombre"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="song"/>
+	</field>
+	<field name="estrellas" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="estrellas"/>
+		<property name="com.jaspersoft.studio.field.label" value="estrellas"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="song"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="180" y="20" width="100" height="30" uuid="7039f249-5ea2-44d2-99a9-daa9e04ae9cf"/>
+				<text><![CDATA[Mejores canciones de]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="280" y="20" width="100" height="30" uuid="1c6cfa77-555c-4c02-a74c-e6da90eafa3c"/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="130" splitType="Stretch">
+			<image>
+				<reportElement x="200" y="-20" width="150" height="140" uuid="7c19fc44-7478-4eda-828e-0c576f4914c5"/>
+				<imageExpression><![CDATA[$F{imageurl}]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="70" y="0" width="100" height="30" uuid="c32e41f2-f0d6-492e-b4fe-685cd84bd8dd">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8cd152da-9ca0-44ca-a48e-710ebee31026"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Album]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="200" y="0" width="100" height="30" uuid="51d4a34c-ae2e-4f10-b090-b1ce6681883e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="69cef486-efbd-462d-b165-bb5eebe06994"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Cancion]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="330" y="0" width="100" height="30" uuid="ce4dd608-2cd4-4a26-94a1-30c88dc9e145">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="39d23b9c-0533-45f2-86d8-4f43ff0a1151"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Estrellas]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="62" splitType="Stretch">
+			<frame>
+				<reportElement x="80" y="20" width="400" height="42" uuid="542dde5d-649d-40a0-b428-b8005b2dc50a"/>
+				<textField>
+					<reportElement x="34" y="6" width="100" height="30" uuid="b56e68cc-523a-4832-81a7-99b185578369">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8cd152da-9ca0-44ca-a48e-710ebee31026"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					</reportElement>
+					<textFieldExpression><![CDATA[$F{COLUMN_3}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="160" y="6" width="100" height="30" uuid="ce3f82da-fa9f-4ef9-a2e9-738170cbe72d">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="69cef486-efbd-462d-b165-bb5eebe06994"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					</reportElement>
+					<textFieldExpression><![CDATA[$F{COLUMN_4}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="280" y="6" width="100" height="30" uuid="779328b6-7a88-4c28-a274-62ae33745a6e">
+						<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="39d23b9c-0533-45f2-86d8-4f43ff0a1151"/>
+						<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					</reportElement>
+					<textFieldExpression><![CDATA[$F{estrellas}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField evaluationTime="Report">
+				<reportElement x="460" y="10" width="100" height="30" uuid="e61753ec-0bd0-4956-a2c0-bbac42c19662"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="46" splitType="Stretch"/>
+	</summary>
+</jasperReport>

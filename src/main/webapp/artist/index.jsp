@@ -49,6 +49,11 @@
             <td><a href="${artist.spotify}">Spotify</a></td>
             <td><a href="${artist.youtube}">Youtube</a> </td>
             
+            <form action="bestsongreport" method="get">
+                <td><input hidden type="text" name="id" value="${artist.id}"</td>
+                <td> <input type="submit" value="Canciones con mas estrellas"></td>
+            </form>
+
             <form action="album" method="get">
                 <td><input hidden type="text" name="id_artist" value="${artist.id}"></td>
                 <td><input type="submit" value="Albums"></td>
