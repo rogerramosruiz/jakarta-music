@@ -37,6 +37,10 @@
     </form>
 </div>
 
+
+<form action="artistreport" method="get">
+    <input type="submit" value="Reporte de artistas">
+</form>
 <table>
     <c:forEach items="${artists}" var="artist">
         <tr>
