@@ -1,0 +1,6 @@
+.mvn
+.vscode
+.idea
+db
+target
+*.env

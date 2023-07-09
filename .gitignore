@@ -3,3 +3,5 @@ target/
 .vscode
 .idea
 src/main/resources/META-INF/persistence.xml
+db
+*.env

@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  app:
+    image: music
+    build: .
+    env_file:
+      - .app.env 
+    environment:
+      - DB_HOST=db    
+    ports:
+      - 80:8080
+
+  db:
+    image: mysql
+    env_file:
+      - .db.env
+    ports:
+      - "3309:3306"
+    volumes:
+      - ./db:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 20s
+      retries: 5
+      start_period: 5s
