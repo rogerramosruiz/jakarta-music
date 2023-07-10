@@ -1,13 +1,17 @@
-version: '3'
+version: '3.9'
 
 services:
   app:
     image: music
-    build: .
+    build: 
+      context: .
+      args:
+        - DB_HOST=$DB_HOST
+        - DB_NAME=$DB_NAME
+        - DB_USER=$DB_USER
+        - DB_PASSWORD=$DB_PASSWORD
     env_file:
-      - .app.env 
-    environment:
-      - DB_HOST=db    
+      - .env    
     ports:
       - 80:8080
 

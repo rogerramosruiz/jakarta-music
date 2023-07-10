@@ -1,8 +1,19 @@
 FROM maven as build
 
+ARG DB_HOST
+ARG DB_NAME
+ARG DB_USER
+ARG DB_PASSWORD
+
+RUN apt-get update
+RUN apt-get install -y gettext-base
+
 WORKDIR /app
 
 COPY . .
+
+RUN envsubst < /app/src/main/resources/META-INF/persistence.temp.xml > /app/src/main/resources/META-INF/persistence.xml
+RUN rm /app/src/main/resources/META-INF/persistence.temp.xml
 
 RUN mvn clean install
 
