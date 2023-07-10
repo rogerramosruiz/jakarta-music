@@ -14,8 +14,7 @@
 <body>
     <form action="editsong" method="post">
         <input hidden type="text" name="id" value="${song.id}">
-        albus dolmbuldore
-        <input  type="text" name="id_album" value="${song.album.id}">
+        <input hidden type="text" name="id_album" value="${song.album.id}">
         <div>
             <label>Nombre</label>
             <input type="text" name="nombre" value="${song.nombre}">
